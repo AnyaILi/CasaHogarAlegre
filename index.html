@@ -33,7 +33,7 @@
       /* background image with a dark overlay for legibility */
       background:
   linear-gradient(rgba(10,6,4,0.5), rgba(10,6,4,0.5)),
-        url('images/hero.jpg') center/cover no-repeat;
+        url('images/hero.JPG') center/cover no-repeat;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -1464,7 +1464,7 @@
         title="Mission trip highlights"
         frameborder="0"
         loading="lazy"
-        referrerpolicy="no-referrer"
+        referrerpolicy="no-referrer-when-downgrade"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
         allowfullscreen
       ></iframe>
@@ -2449,12 +2449,18 @@ function submitTripForm() {
      }
 
     iframe.addEventListener('load', onIframeLoad);
-    // set src with autoplay and include page origin (helps avoid some player configuration errors)
-    // do not duplicate origin if it's already present in data-src
+    // set src with autoplay; include page origin only when running on http/https
+    // this avoids sending origin=null when the page is opened via file:// which can
+    // trigger YouTube player configuration errors in Chrome
     const sep = src.includes('?') ? '&' : '?';
     const params = ['autoplay=1'];
     if (!/origin=/i.test(src)) {
-      try { params.push('origin=' + encodeURIComponent(location.origin)); } catch (e) { /* ignore if location is unavailable */ }
+      try {
+        // only append origin for http(s) pages and when location.origin is meaningful
+        if (location && location.protocol && location.protocol.indexOf('http') === 0 && location.origin && location.origin !== 'null') {
+          params.push('origin=' + encodeURIComponent(location.origin));
+        }
+      } catch (e) { /* ignore when location is unavailable */ }
     }
     iframe.src = src + sep + params.join('&');
    });
