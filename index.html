@@ -1558,13 +1558,13 @@
       <button class="form-submit" onclick="submitTripForm()">Notify Me — Submit Interest</button>
     </div>
 
-    <div class="success-state" id="tripSuccessState">
+    <!-- <div class="success-state" id="tripSuccessState">
       <div class="check">🎉</div>
       <h3>Thanks — You're on the List!</h3>
       <p>We received your interest and the trip coordinator will contact you with next steps.</p>
       <br>
       <button class="btn-sponsor" style="display:inline-block;padding:12px 28px;border:none;cursor:pointer;" onclick="closeTripForm()">Back to Site</button>
-    </div>
+    </div> -->
   </div>
 </div>
 
@@ -1612,7 +1612,7 @@
   <div class="form-modal" onclick="event.stopPropagation()">
     <button class="modal-close" style="position:absolute;top:16px;right:16px;background:#eee;color:#333;" onclick="closeForm()">✕</button>
 
-    <div id="formContent">
+    <!-- <div id="formContent"> 
       <h2>Sponsor <span id="formChildName" style="color:var(--tierra);font-style:italic;"></span></h2>
       <p class="sub">Join the Valley Christian family of sponsors. $45/month makes a lasting difference.</p>
 
@@ -1657,6 +1657,15 @@
       </div>
 
       <button class="form-submit" onclick="submitForm()">Complete Sponsorship — $45/month</button>
+    </div> -->
+    <div id="formContent">
+      <h2>Sponsor <span id="formChildName" style="color:var(--tierra);font-style:italic;"></span></h2>
+      <p class="sub">Complete your sponsorship securely through Donorbox.</p>
+
+      <div id="donorboxContainer"></div>
+      <!-- <button class="form-submit" onclick="submitForm()">
+        Continue to Payment →
+      </button> -->
     </div>
 
     <div class="success-state" id="successState">
@@ -1669,24 +1678,26 @@
   </div>
 </div>
 
+<script src="https://donorbox.org/widget.js" paypalExpress="false"></script>
+
 <script>
 const children = [
   {
     id: 1,
-    name: "Francisco A",
-    nickname: "Frank",
+    // name: "Francisco A",
+    name: "Frank",
     age: 17,
     gender: "Boy",
     interests: ["Basketball", "Drawing"],
-    funfact: "Francisco is very skilled in English and math.",
-    about: "Francisco arrived at Casa Hogar at age 12 and has been a part of the orphanage for 5.6 years. He dreams of studying engineering and traveling the world.",
+    funfact: "Frank is very skilled in English and math.",
+    about: "Frank arrived at Casa Hogar at age 12 and has been a part of the orphanage for 5.6 years. He dreams of studying engineering and traveling the world.",
     image: "images/francisco.png",
     sponsored: false
   },
   {
     id: 2,
     name: "Arturo",
-    nickname: "Arturo",
+    // nickname: "Arturo",
     age: 17,
     gender: "Boy",
     interests: ["Basketball", "Reading books about dinosaurs"],
@@ -1697,20 +1708,20 @@ const children = [
   },
   {
     id: 3,
-    name: "Ximena G",
-    nickname: "Xime",
+    // name: "Ximena G",
+    name: "Xime",
     age: 16,
     gender: "Girl",
     interests: ["Singing", "Embroidery"],
-    funfact: "Ximena is very creative and is very skilled in making beautiful bracelets.",
-    about: "Ximena arrived at Casa Hogar at age 6 and has been a part of the orphanage for 9.9 years. She wants to become a teacher in the future.",
+    funfact: "Xime is very creative and is very skilled in making beautiful bracelets.",
+    about: "Xime arrived at Casa Hogar at age 6 and has been a part of the orphanage for 9.9 years. She wants to become a teacher in the future.",
     image: "images/ximena.png",
     sponsored: false
   },
   {
     id: 4,
     name: "Mariana",
-    nickname: "Mariana",
+    // nickname: "Mariana",
     age: 16,
     gender: "Girl",
     interests: ["Baking", "Taking care of the babies"],
@@ -1721,8 +1732,8 @@ const children = [
   },
   {
     id: 5,
-    name: "Dana P",
-    nickname: "Dana",
+    name: "Dana",
+    // nickname: "Dana",
     age: 16,
     gender: "Girl",
     interests: ["Taking care of the babies", "Reading"],
@@ -1733,68 +1744,68 @@ const children = [
   },
   {
     id: 6,
-    name: "Noemi",
-    nickname: "Mima",
+    // name: "Noemi",
+    name: "Mima",
     age: 18,
     gender: "Girl",
     interests: ["Cooking", "Reading"],
-    funfact: "Noemi loves nature and often spends time outdoors.",
-    about: "Noemi arrived at Casa Hogar at age 9 and has been a part of the orphanage for 9.0 years. She wants to study languages to travel and explore different cultures.",
+    funfact: "Mima loves nature and often spends time outdoors.",
+    about: "Mima arrived at Casa Hogar at age 9 and has been a part of the orphanage for 9.0 years. She wants to study languages to travel and explore different cultures.",
     image: "images/noemi.png",
     sponsored: false
   },
   {
     id: 7,
-    name: "Antonio",
-    nickname: "Lugo",
+    // name: "Antonio",
+    name: "Lugo",
     age: 19,
     gender: "Boy",
     interests: ["Playing soccer", "Cooking"],
-    funfact: "Antonio loves cooking and designing.",
-    about: "Antonio arrived at Casa Hogar at age 19 and has been a part of the orphanage for 0.2 years. He dreams to become a soccer player.",
+    funfact: "Lugo loves cooking and designing.",
+    about: "Lugo arrived at Casa Hogar at age 19 and has been a part of the orphanage for 0.2 years. He dreams to become a soccer player.",
     image: "images/antonio.png",
     sponsored: false
   },
   {
     id: 8,
-    name: "José Antonio",
-    nickname: "Toño",
+    // name: "José Antonio",
+    name: "Toño",
     age: 19,
     gender: "Boy",
-    interests: ["Boxing", "Electrical work"],
-    funfact: "José Antonio loves to build and work with tools.",
+    interests: ["Bioxng", "Electrical work"],
+    funfact: "Toño loves to build and work with tools.",
     about: "Toño arrived at Casa Hogar at age 4 and has been a part of the orphanage for 14.3 years. He wants to be an electrical engineer in the future.",
     image: "images/joseantonio.png",
     sponsored: false
   },
   {
     id: 9,
-    name: "Yosmar",
-    nickname: "Choma",
+    // name: "Yosmar",
+    name: "Choma",
     age: 18,
     gender: "Boy",
     interests: ["Reading", "Listening to music"],
-    funfact: "Yosmar is loves to to research new things.",
-    about: "Yosmar arrived at Casa Hogar at age 10 and has been a part of the orphanage for 8.7 years. He wants to become a doctor in the future.",
+    funfact: "Choma is loves to to research new things.",
+    about: "Choma arrived at Casa Hogar at age 10 and has been a part of the orphanage for 8.7 years. He wants to become a doctor in the future.",
     image: "images/yosmar.png",
     sponsored: false
   },
   {
     id: 10,
-    name: "Luis",
-    nickname: "Wicho",
+    // name: "Luis",
+    name: "Wicho",
     age: 16,
     gender: "Boy",
     interests: ["Playing basketball", "Drawing"],
-    funfact: "Luis is very artistic and loves learning new things.",
-    about: "Luis arrived at Casa Hogar at age 7 and has been a part of the orphanage for 9.3 years. He wants to be a music producer especially for electronic music.",
+    funfact: "Wicho is very artistic and loves learning new things.",
+    about: "Wicho arrived at Casa Hogar at age 7 and has been a part of the orphanage for 9.3 years. He wants to be a music producer especially for electronic music.",
     image: "images/luis.png",
     sponsored: false
   },
   {
     id: 11,
-    name: "Karla J",
-    nickname: "Karla",
+    name: "Karla",
+    // nickname: "Karla",
     age: 14,
     gender: "Girl",
     interests: ["Playing soccer", "Coloring"],
@@ -1806,7 +1817,7 @@ const children = [
   {
     id: 12,
     name: "Yoni",
-    nickname: "Yoni",
+    // nickname: "Yoni",
     age: 13,
     gender: "Boy",
     interests: ["Playing basketball", "Reading stories"],
@@ -1817,8 +1828,8 @@ const children = [
   },
   {
     id: 13,
-    name: "Rigorberto",
-    nickname: "Rigo",
+    // name: "Rigorberto",
+    name: "Rigo",
     age: 15,
     gender: "Boy",
     interests: ["Playing soccer", "Playing basketball"],
@@ -1829,20 +1840,20 @@ const children = [
   },
   {
     id: 14,
-    name: "Adamari",
-    nickname: "Mari",
+    // name: "Adamari",
+    name: "Mari",
     age: 14,
     gender: "Girl",
     interests: ["Coloring", "Sleeping"],
-    funfact: "Adamari is good at english and math.",
-    about: "Adamari arrived at Casa Hogar at age 2 and has been a part of the orphanage for 11.9 years. She wants to study gastronomy in the future.",
+    funfact: "Mari is good at english and math.",
+    about: "Mari arrived at Casa Hogar at age 2 and has been a part of the orphanage for 11.9 years. She wants to study gastronomy in the future.",
     image: "images/adamari.png",
     sponsored: false
   },
   {
     id: 15,
-    name: "Geysi M",
-    nickname: "Geysi",
+    name: "Geysi",
+    // nickname: "Geysi",
     age: 13,
     gender: "Girl",
     interests: ["Singing", "Playing soccer"],
@@ -1854,7 +1865,7 @@ const children = [
   {
     id: 16,
     name: "Ivan",
-    nickname: "Ivan",
+    // nickname: "Ivan",
     age: 12,
     gender: "Boy",
     interests: ["Playing with Legos", "Playing soccer"],
@@ -1865,20 +1876,20 @@ const children = [
   },
   {
     id: 17,
-    name: "Anita",
-    nickname: "Ana",
+    // name: "Anita",
+    name: "Ana",
     age: 14,
     gender: "Girl",
     interests: ["Playing basketball", "Playing volleyball"],
-    funfact: "Anita is very shy and quiet.",
-    about: "Anita arrived at Casa Hogar at age 9 and has been a part of the orphanage for 5.0 years. She wants to be a teacher in the future.",
+    funfact: "Ana is very shy and quiet.",
+    about: "Ana arrived at Casa Hogar at age 9 and has been a part of the orphanage for 5.0 years. She wants to be a teacher in the future.",
     image: "images/anita.png",
     sponsored: false
   },
   {
     id: 18,
-    name: "Darwin D",
-    nickname: "Darwin",
+    name: "Darwin",
+    // nickname: "Darwin",
     age: 14,
     gender: "Boy",
     interests: ["Playing basketball", "Playing soccer"],
@@ -1890,7 +1901,7 @@ const children = [
   {
     id: 19,
     name: "Lucas",
-    nickname: "Lucas",
+    // nickname: "Lucas",
     age: 14,
     gender: "Boy",
     interests: ["Playing volleyball", "Playing marbles"],
@@ -1901,8 +1912,8 @@ const children = [
   },
   {
     id: 20,
-    name: "Flor De Asalia",
-    nickname: "Flor",
+    // name: "Flor De Asalia",
+    name: "Flor",
     age: 14,
     gender: "Girl",
     interests: ["Watching movies", "Playing soccer"],
@@ -1913,8 +1924,8 @@ const children = [
   },
   {
     id: 21,
-    name: "Blanca L",
-    nickname: "Lety",
+    // name: "Blanca L",
+    name: "Lety",
     age: 15,
     gender: "Girl",
     interests: ["Playing with dolls", "Playing with balls"],
@@ -1925,8 +1936,8 @@ const children = [
   },
   {
     id: 22,
-    name: "Maria Del Carmen",
-    nickname: "Carmen",
+    // name: "Maria Del Carmen",
+    name: "Carmen",
     age: 16,
     gender: "Girl",
     interests: ["Playing basketball", "Coloring"],
@@ -1937,8 +1948,8 @@ const children = [
   },
   {
     id: 23,
-    name: "Miguel A",
-    nickname: "Miguel",
+    name: "Miguel",
+    // nickname: "Miguel",
     age: 17,
     gender: "Boy",
     interests: ["Reading", "Playing soccer"],
@@ -1950,7 +1961,7 @@ const children = [
   {
     id: 24,
     name: "Bruno",
-    nickname: "Bruno",
+    // nickname: "Bruno",
     age: 13,
     gender: "Boy",
     interests: ["Playing soccer", "Painting"],
@@ -1961,8 +1972,8 @@ const children = [
   },
   {
     id: 25,
-    name: "Dariney C",
-    nickname: "Clemente",
+    // name: "Dariney C",
+    name: "Clemente",
     age: 12,
     gender: "Boy",
     interests: ["Playing soccer", "Playing basketball"],
@@ -1973,8 +1984,8 @@ const children = [
   },
   {
     id: 26,
-    name: "Itzel M",
-    nickname: "Margarita",
+    // name: "Itzel M",
+    name: "Margarita",
     age: 11,
     gender: "Girl",
     interests: ["Playing soccer", "Embroidery"],
@@ -1985,8 +1996,8 @@ const children = [
   },
   {
     id: 27,
-    name: "Pascuala C",
-    nickname: "Carolina",
+    // name: "Pascuala C",
+    name: "Carolina",
     age: 11,
     gender: "Girl",
     interests: ["Playing soccer", "Playing basketball"],
@@ -1998,7 +2009,7 @@ const children = [
   {
     id: 28,
     name: "Claudio",
-    nickname: "Claudio",
+    // nickname: "Claudio",
     age: 12,
     gender: "Boy",
     interests: ["Playing with Legos", "Playing soccer"],
@@ -2009,8 +2020,8 @@ const children = [
   },
   {
     id: 29,
-    name: "Rey D",
-    nickname: "David",
+    // name: "Rey D",
+    name: "David",
     age: 13,
     gender: "Boy",
     interests: ["Playing soccer", "Playing chess"],
@@ -2022,7 +2033,7 @@ const children = [
   {
     id: 30,
     name: "Genesis",
-    nickname: "Genesis",
+    // nickname: "Genesis",
     age: 17,
     gender: "Girl",
     interests: ["Hair styling", "Playing"],
@@ -2034,7 +2045,7 @@ const children = [
   {
     id: 31,
     name: "Fabian",
-    nickname: "Fabian",
+    // nickname: "Fabian",
     age: 13,
     gender: "Boy",
     interests: ["Playing soccer", "Singing"],
@@ -2045,8 +2056,8 @@ const children = [
   },
   {
     id: 32,
-    name: "William O",
-    nickname: "William",
+    name: "William",
+    // nickname: "William",
     age: 14,
     gender: "Boy",
     interests: ["Playing basketball", "Playing soccer"],
@@ -2057,8 +2068,8 @@ const children = [
   },
   {
     id: 33,
-    name: "Carlos O",
-    nickname: "Carlos",
+    name: "Carlos",
+    // nickname: "Carlos",
     age: 9,
     gender: "Boy",
     interests: ["Playing soccer", "Playing basketball"],
@@ -2069,8 +2080,8 @@ const children = [
   },
   {
     id: 34,
-    name: "Fatima N",
-    nickname: "Fatima",
+    name: "Fatima",
+    // nickname: "Fatima",
     age: 10,
     gender: "Girl",
     interests: ["Playing soccer", "Jumping rope"],
@@ -2082,7 +2093,7 @@ const children = [
   {
     id: 35,
     name: "Gilberto",
-    nickname: "Gilbeto",
+    // nickname: "Gilbeto",
     age: 11,
     gender: "Boy",
     interests: ["Playing soccer", "Playing volleyball"],
@@ -2094,7 +2105,7 @@ const children = [
   {
     id: 36,
     name: "Eunices",
-    nickname: "Eunices",
+    // nickname: "Eunices",
     age: 9,
     gender: "Girl",
     interests: ["Playing soccer", "Playing basketball"],
@@ -2105,8 +2116,8 @@ const children = [
   },
   {
     id: 37,
-    name: "Dulce M",
-    nickname: "Dulce",
+    name: "Dulce",
+    // nickname: "Dulce",
     age: 11,
     gender: "Girl",
     interests: ["Playing soccer", "Playing basketball"],
@@ -2117,32 +2128,32 @@ const children = [
   },
   {
     id: 38,
-    name: "Yenibeth",
-    nickname: "Yeni",
+    // name: "Yenibeth",
+    name: "Yeni",
     age: 11,
     gender: "Girl",
     interests: ["Playing soccer", "Playing basketball"],
-    funfact: "Yenibeth is very dedicated to crafts.",
-    about: "Yenibeth arrived at Casa Hogar at age 6 and has been a part of the orphanage for 4.7 years. She wants to be a lawyer in the future.",
+    funfact: "Yeni is very dedicated to crafts.",
+    about: "Yeni arrived at Casa Hogar at age 6 and has been a part of the orphanage for 4.7 years. She wants to be a lawyer in the future.",
     image: "images/yenibeth.png",
     sponsored: false
   },
   {
     id: 39,
-    name: "Ivana N",
-    nickname: "Nicole",
+    // name: "Ivana N",
+    name: "Nicole",
     age: 10,
     gender: "Girl",
     interests: ["Playing basketball", "Playing soccer"],
-    funfact: "Ivana enjoys reading and has a good memory.",
-    about: "Ivana arrived at Casa Hogar at age 4 and has been a part of the orphanage for 6.2 years. She wants to be a chef in the future.",
+    funfact: "Nicole enjoys reading and has a good memory.",
+    about: "Nicole arrived at Casa Hogar at age 4 and has been a part of the orphanage for 6.2 years. She wants to be a chef in the future.",
     image: "images/ivana.png",
     sponsored: false
   },
   {
     id: 40,
     name: "Santiago",
-    nickname: "Santiago",
+    // nickname: "Santiago",
     age: 11,
     gender: "Boy",
     interests: ["Playing soccer", "Playing volleyball"],
@@ -2154,7 +2165,7 @@ const children = [
   {
     id: 41,
     name: "Jesus",
-    nickname: "Jesus",
+    // nickname: "Jesus",
     age: 10,
     gender: "Boy",
     interests: ["Playing soccer", "Playing volleyball"],
@@ -2165,8 +2176,8 @@ const children = [
   },
   {
     id: 42,
-    name: "Enoc A",
-    nickname: "Enoc",
+    name: "Enoc",
+    // nickname: "Enoc",
     age: 10,
     gender: "Boy",
     interests: ["Playing soccer", "Playing volleyball"],
@@ -2177,20 +2188,20 @@ const children = [
   },
   {
     id: 43,
-    name: "Sarai C",
-    nickname: "Sara",
+    // name: "Sarai C",
+    name: "Sara",
     age: 10,
     gender: "Girl",
     interests: ["Playing soccer", "Jumping rope"],
-    funfact: "Sarai enjoys math and reading.",
-    about: "Sarai arrived at Casa Hogar at age 9 and has been a part of the orphanage for 0.7 years. She wants to be a doctor.",
+    funfact: "Sara enjoys math and reading.",
+    about: "Sara arrived at Casa Hogar at age 9 and has been a part of the orphanage for 0.7 years. She wants to be a doctor.",
     image: "images/sarai.png",
     sponsored: false
   },
   {
     id: 44,
     name: "Lizbeth",
-    nickname: "Lizbeth",
+    // nickname: "Lizbeth",
     age: 9,
     gender: "Girl",
     interests: ["Playing basketball", "Gymnastics"],
@@ -2201,14 +2212,494 @@ const children = [
   },
   {
     id: 45,
-    name: "Miranda E",
-    nickname: "Miranda",
+    name: "Miranda",
+    // nickname: "Miranda",
     age: 6,
     gender: "Girl",
     interests: ["Playing hide and seek", "Painting"],
     funfact: "Miranda is very skilled in english and math.",
     about: "Miranda arrived at Casa Hogar at age 6 and has been a part of the orphanage for 0.8 years. She wants to be a nurse in the future.",
     image: "images/miranda.png",
+    sponsored: false
+  },
+  {
+    id: 46,
+    name: "Blanquita",
+    // nickname: "Yazmin",
+    age: 6,
+    gender: "Girl",
+    interests: ["Playing pretend kitchen", "Coloring"],
+    funfact: "Blanquita is very imaginative and loves all her siblings.",
+    about: "Blanquita arrived at Casa Hogar at age 5 and has been a part of the orphanage for 1.1 years. She wants to be a doctor in the future.",
+    image: "images/blancajosselyn.png",
+    sponsored: false
+  },
+  {
+    id: 47,
+    name: "Emili",
+    // nickname: "Yazmin",
+    age: 6,
+    gender: "Girl",
+    interests: ["Playing with blocks", "Painting"],
+    funfact: "Emili is very good at crafts.",
+    about: "Emili arrived at Casa Hogar at age 4 and has been a part of the orphanage for 1.8 years. She wants to be a pediatrician in the future.",
+    image: "images/emili.png",
+    sponsored: false
+  },
+  {
+    id: 48,
+    name: "Masha",
+    // nickname: "Yazmin",
+    age: 6,
+    gender: "Girl",
+    interests: ["Painting", "Playing with dolls"],
+    funfact: "Masha is very good at singing.",
+    about: "Masha arrived at Casa Hogar at age 4 and has been a part of the orphanage for 1.8 years. She wants to be a doctor in the future.",
+    image: "images/melissa.png",
+    sponsored: false
+  },
+  {
+    id: 49,
+    name: "Gabi",
+    // nickname: "Yazmin",
+    age: 6,
+    gender: "Girl",
+    interests: ["Playing with blocks", "Hide and seek"],
+    funfact: "Gabi enjoys being read to.",
+    about: "Gabi arrived at Casa Hogar at age 5 and has been a part of the orphanage for 1.2 years. She wants to be a chef in the future.",
+    image: "images/gabriela.png",
+    sponsored: false
+  },
+  {
+    id: 50,
+    name: "Chaparrita",
+    // nickname: "Yazmin",
+    age: 4,
+    gender: "Girl",
+    interests: ["Playing pretend kitchen", "Painting"],
+    funfact: "Chaparrita enjoys dancing.",
+    about: "Chaparrita arrived at Casa Hogar at age 1 and has been a part of the orphanage for 3.1 years. He wants to be a pediatrician in the future.",
+    image: "images/ambar.png",
+    sponsored: false
+  },
+  {
+    id: 51,
+    name: "Chaparrito",
+    // nickname: "Yazmin",
+    age: 5,
+    gender: "Boy",
+    interests: ["Playing soccer", "Playing with toy cars"],
+    funfact: "Chaparrito enjoys math.",
+    about: "Chaparrito arrived at Casa Hogar at age 1 and has been a part of the orphanage for 4.2 years. He wants to be a teacher in the future.",
+    image: "images/asbel.png",
+    sponsored: false
+  },
+  {
+    id: 52,
+    name: "Julio",
+    // nickname: "Yazmin",
+    age: 6,
+    gender: "Boy",
+    interests: ["Playing soccer", "Playing basketball"],
+    funfact: "Julio is very creative and has great storytelling skills.",
+    about: "Julio arrived at Casa Hogar at age 1 and has been a part of the orphanage for 4.2 years. He wants to be a pediatrician in the future.",
+    image: "images/julio.png",
+    sponsored: false
+  },
+  {
+    id: 53,
+    name: "Elena",
+    // nickname: "Yazmin",
+    age: 5,
+    gender: "Girl",
+    interests: ["Playing pretend kitchen", "Playing basketball"],
+    funfact: "Elena is very good at crafts.",
+    about: "Elena arrived at Casa Hogar at age 4 and has been a part of the orphanage for 0.5 years. She wants to be a chef in the future.",
+    image: "images/elena.png",
+    sponsored: false
+  },
+  {
+    id: 54,
+    name: "Ana",
+    // nickname: "Yazmin",
+    age: 4,
+    gender: "Girl",
+    interests: ["Playing with dolls", "Playing pretend kitchen"],
+    funfact: "Ana is very good at singing.",
+    about: "Ana arrived at Casa Hogar at age 3 and has been a part of the orphanage for 1.0 years. She wants to be a painter in the future.",
+    image: "images/ana.png",
+    sponsored: false
+  },
+  {
+    id: 55,
+    name: "Sele",
+    // nickname: "Yazmin",
+    age: 27,
+    gender: "Girl",
+    interests: ["Playing with dolls", "Painting"],
+    funfact: "Sele enjoys painting.",
+    about: "Sele arrived at Casa Hogar at age 7 and has been a part of the orphanage for 19.8 years. She wants to be a doctor in the future.",
+    image: "images/selene.png",
+    sponsored: false
+  },
+  {
+    id: 56,
+    name: "Alexa",
+    // nickname: "Yazmin",
+    age: 4,
+    gender: "Girl",
+    interests: ["Playing with dolls", "Playing pretend kitchen"],
+    funfact: "Alexa enjoys listening to stories.",
+    about: "Alexa arrived at Casa Hogar at age 2 and has been a part of the orphanage for 1.8 years. She wants to be a doctor in the future.",
+    image: "images/alexa.png",
+    sponsored: false
+  },
+  {
+    id: 57,
+    name: "Javier",
+    // nickname: "Yazmin",
+    age: 6,
+    gender: "Boy",
+    interests: ["Playing basketball", "Playing with animals"],
+    funfact: "Javier is a very creative storyteller.",
+    about: "Javier arrived at Casa Hogar at age 2 and has been a part of the orphanage for 4.2 years. He wants to be a veterinarian in the future.",
+    image: "images/javier.png",
+    sponsored: false
+  },
+  {
+    id: 58,
+    name: "Fer",
+    // nickname: "Yazmin",
+    age: 5,
+    gender: "Boy",
+    interests: ["Playing basketball", "Playing with toy cars"],
+    funfact: "Fer enjoys listening to stories.",
+    about: "Fer arrived at Casa Hogar at age 1 and has been a part of the orphanage for 4.2 years. He wants to be a police officer in the future.",
+    image: "images/fernando.png",
+    sponsored: false
+  },
+  {
+    id: 59,
+    name: "Kevin",
+    // nickname: "Yazmin",
+    age: 4,
+    gender: "Boy",
+    interests: ["Playing cops and robbers", "Playing firefighters"],
+    funfact: "Kevin enjoys being read stories.",
+    about: "Kevin arrived at Casa Hogar at age 3 and has been a part of the orphanage for 0.5 years. He wants to be a firefighter in the future.",
+    image: "images/kevin.png",
+    sponsored: false
+  },
+  {
+    id: 60,
+    name: "Lupita",
+    // nickname: "Yazmin",
+    age: 7,
+    gender: "Girl",
+    interests: ["Playing basketball", "Painting"],
+    funfact: "Lupita loves reading.",
+    about: "Lupita arrived at Casa Hogar at age 6 and has been a part of the orphanage for 0.8 years. She wants to be a doctor in the future.",
+    image: "images/lupita.png",
+    sponsored: false
+  },
+  {
+    id: 61,
+    name: "Natanael",
+    // nickname: "Yazmin",
+    age: 7,
+    gender: "Boy",
+    interests: ["Playing soccer", "Racing games"],
+    funfact: "Natanael enjoys reading and crafts.",
+    about: "Natanael arrived at Casa Hogar at age 6 and has been a part of the orphanage for 1.1 years. He wants to join the military in the future.",
+    image: "images/adriel.png",
+    sponsored: false
+  },
+  {
+    id: 62,
+    name: "Rafa",
+    // nickname: "Yazmin",
+    age: 11,
+    gender: "Boy",
+    interests: ["Playing basketball", "Doing his homework"],
+    funfact: "Rafa has a lot of useful practical skills.",
+    about: "Rafa arrived at Casa Hogar at age 10 and has been a part of the orphanage for 1.1 years. He wants to be a farmer in the future.",
+    image: "images/antoniorafael.png",
+    sponsored: false
+  },
+  {
+    id: 63,
+    name: "Daniela",
+    // nickname: "Yazmin",
+    age: 7,
+    gender: "Girl",
+    interests: ["Cooking", "Writing"],
+    funfact: "Daniela loves making crafts.",
+    about: "Daniela arrived at Casa Hogar at age 8 and has been a part of the orphanage for 1.1 years. She wants to be a ophthalmologist in the future.",
+    image: "images/daniela.png",
+    sponsored: false
+  },
+  {
+    id: 64,
+    name: "Josue",
+    // nickname: "Yazmin",
+    age: 9,
+    gender: "Boy",
+    interests: ["Card games", "Puzzles"],
+    funfact: "Josue loves reading and crafts.",
+    about: "Josue arrived at Casa Hogar at age 6 and has been a part of the orphanage for 3.1 years. He wants to be a chef in the future.",
+    image: "images/josue.png",
+    sponsored: false
+  },
+  {
+    id: 65,
+    name: "Eli",
+    // nickname: "Yazmin",
+    age: 8,
+    gender: "Boy",
+    interests: ["Watching movies", "Cleaning"],
+    funfact: "Eli loves reading and listening to stories.",
+    about: "Eli arrived at Casa Hogar at age 3 and has been a part of the orphanage for 5.5 years. He wants to join the military in the future.",
+    image: "images/elias.png",
+    sponsored: false
+  },
+  {
+    id: 66,
+    name: "Laura",
+    // nickname: "Yazmin",
+    age: 7,
+    gender: "Girl",
+    interests: ["Reading", "Card games"],
+    funfact: "Laura loves crafts and stories.",
+    about: "Laura arrived at Casa Hogar at age 6 and has been a part of the orphanage for 0.5 years. She wants to be a doctor in the future.",
+    image: "images/laura.png",
+    sponsored: false
+  },
+  {
+    id: 67,
+    name: "Lleny",
+    // nickname: "Yazmin",
+    age: 1,
+    gender: "Girl",
+    interests: ["Painting", "Racing"],
+    funfact: "Lleny enjoys listening to stories.",
+    about: "Lleny arrived at Casa Hogar at age 0 and has been a part of the orphanage for 0.5 years. She wants to be a chef in the future.",
+    image: "images/lleny.png",
+    sponsored: false
+  },
+  {
+    id: 68,
+    name: "Christopher",
+    // nickname: "Yazmin",
+    age: 8,
+    gender: "Boy",
+    interests: ["Card games", "Hide and seek"],
+    funfact: "Christopher loves reading and writing.",
+    about: "Christopher arrived at Casa Hogar at age 2 and has been a part of the orphanage for 6.2 years. He wants to be a chef in the future.",
+    image: "images/christopher.png",
+    sponsored: false
+  },
+  {
+    id: 69,
+    name: "Ardani",
+    // nickname: "Yazmin",
+    age: 8,
+    gender: "Girl",
+    interests: ["Painting", "Swimming"],
+    funfact: "Ardani loves making crafts.",
+    about: "Ardani arrived at Casa Hogar at age 4 and has been a part of the orphanage for 4.2 years. She wants to be a chef in the future.",
+    image: "images/ardani.png",
+    sponsored: false
+  },
+  {
+    id: 70,
+    name: "Leslie",
+    // nickname: "Yazmin",
+    age: 10,
+    gender: "Boy",
+    interests: ["Painting", "Hide and seek"],
+    funfact: "Leslie enjoys creative storytelling.",
+    about: "Leslie arrived at Casa Hogar at age 10 and has been a part of the orphanage for 0.3 years. He wants to be a military doctor in the future.",
+    image: "images/leslie.png",
+    sponsored: false
+  },
+  {
+    id: 71,
+    name: "Benja",
+    // nickname: "Yazmin",
+    age: 7,
+    gender: "Boy",
+    interests: ["Playing soccer", "Playing tag"],
+    funfact: "Benja loves reading and math.",
+    about: "Benja arrived at Casa Hogar at age 1 and has been a part of the orphanage for 6.9 years. He wants to be a chef in the future.",
+    image: "images/benjamin.png",
+    sponsored: false
+  },
+  {
+    id: 72,
+    name: "Jorge",
+    // nickname: "Yazmin",
+    age: 8,
+    gender: "Boy",
+    interests: ["Playing soccer", "Bible questions"],
+    funfact: "Jorge loves reading and drawing.",
+    about: "Jorge arrived at Casa Hogar at age 7 and has been a part of the orphanage for 0.9 years. He wants to be a magician or president.",
+    image: "images/jorge.png",
+    sponsored: false
+  },
+  {
+    id: 73,
+    name: "Mendoza",
+    // nickname: "Yazmin",
+    age: 11,
+    gender: "Boy",
+    interests: ["Playing soccer", "Hide and seek"],
+    funfact: "Mendoza loves reading.",
+    about: "Mendoza arrived at Casa Hogar at age 10 and has been a part of the orphanage for 1.1 years. He wants to join the military in the future.",
+    image: "images/jose.png",
+    sponsored: false
+  },
+  {
+    id: 74,
+    name: "Emma",
+    // nickname: "Yazmin",
+    age: 9,
+    gender: "Boy",
+    interests: ["Reading", "Writing"],
+    funfact: "Emma loves reading and storytelling.",
+    about: "Emma arrived at Casa Hogar at age 7 and has been a part of the orphanage for 1.7 years. She wants to be a doctor in the future.",
+    image: "images/emmanuel.png",
+    sponsored: false
+  },
+  {
+    id: 75,
+    name: "Manuel",
+    // nickname: "Yazmin",
+    age: 10,
+    gender: "Boy",
+    interests: ["Reading", "Building things"],
+    funfact: "Manuel has great math skills.",
+    about: "Manuel arrived at Casa Hogar at age 5 and has been a part of the orphanage for 5.5 years. He wants to work in systems and IT in the future.",
+    image: "images/manuel.png",
+    sponsored: false
+  },
+  {
+    id: 76,
+    name: "Ximena",
+    // nickname: "Yazmin",
+    age: 10,
+    gender: "Girl",
+    interests: ["Painting", "Singing"],
+    funfact: "Ximena loves making crafts and is helpful to others.",
+    about: "Ximena arrived at Casa Hogar at age 10 and has been a part of the orphanage for 0.5 years. She wants to be a chef in the future.",
+    image: "images/ximena1.png",
+    sponsored: false
+  },
+  {
+    id: 77,
+    name: "Avatar",
+    // nickname: "Yazmin",
+    age: 7,
+    gender: "Boy",
+    interests: ["Playing basketball", "Writing"],
+    funfact: "Avatar loves reading.",
+    about: "Avatar arrived at Casa Hogar at age 3 and has been a part of the orphanage for 4.2 years. He wants to be a chef and a boxer in the future.",
+    image: "images/aviatar.png",
+    sponsored: false
+  },
+  {
+    id: 78,
+    name: "Juan",
+    // nickname: "Yazmin",
+    age: 18,
+    gender: "Boy",
+    interests: ["Playing soccer", "Carpentry"],
+    funfact: "Juan enjoys helping others.",
+    about: "Juan arrived at Casa Hogar at age 8 and has been a part of the orphanage for 9.4 years. He wants to be an engineer in the future.",
+    image: "images/juan.png",
+    sponsored: false
+  },
+  {
+    id: 79,
+    name: "Silvia",
+    // nickname: "Yazmin",
+    age: 21,
+    gender: "Girl",
+    interests: ["Cleaning"],
+    funfact: "Silvia is very helpful in the kitchen.",
+    about: "Silvia arrived at Casa Hogar at age 18 and has been a part of the orphanage for 3.1 years. She wants to be a cook in the future.",
+    image: "images/maria.png",
+    sponsored: false
+  },
+  {
+    id: 80,
+    name: "Lalito",
+    // nickname: "Yazmin",
+    age: 2,
+    gender: "Boy",
+    interests: ["Playing"],
+    funfact: "Lalito plays well with others.",
+    about: "Lalito arrived at Casa Hogar at age 2 and has been a part of the orphanage for 0.8 years.",
+    image: "images/eduardo.png",
+    sponsored: false
+  },
+  {
+    id: 81,
+    name: "Arleth",
+    // nickname: "Yazmin",
+    age: 2,
+    gender: "Girl",
+    interests: ["Playing"],
+    funfact: "Arleth is very playful.",
+    about: "Arleth arrived at Casa Hogar at age 1 and has been a part of the orphanage for 0.8 years.",
+    image: "images/arleth.png",
+    sponsored: false
+  },
+  {
+    id: 82,
+    name: "Manuel",
+    // nickname: "Yazmin",
+    age: 2,
+    gender: "Boy",
+    interests: ["Playing"],
+    funfact: "Manuel plays and shares with others.",
+    about: "Manuel arrived at Casa Hogar at age 2 and has been a part of the orphanage for 0.5 years.",
+    image: "images/juanmanuel.png",
+    sponsored: false
+  },
+  {
+    id: 83,
+    name: "Angelito",
+    // nickname: "Yazmin",
+    age: 3,
+    gender: "Boy",
+    interests: ["Playing"],
+    funfact: "Angelito is very playful.",
+    about: "Angelito arrived at Casa Hogar at age 0 and has been a part of the orphanage for 3.4 years.",
+    image: "images/angel.png",
+    sponsored: false
+  },
+  {
+    id: 84,
+    name: "Majo",
+    // nickname: "Yazmin",
+    age: 28,
+    gender: "Girl",
+    interests: ["Drawing", "Coloring"],
+    funfact: "Majo loves drawing what she sees or imagines.",
+    about: "Majo arrived at Casa Hogar at age 3 and has been a part of the orphanage for 25.2 years.",
+    image: "images/majo.png",
+    sponsored: false
+  },
+  {
+    id: 85,
+    name: "Ingrid",
+    // nickname: "Yazmin",
+    age: 21,
+    gender: "Girl",
+    interests: ["Reading", "Writing"],
+    funfact: "Ingrid loves reading and researching.",
+    about: "Ingrid arrived at Casa Hogar at age 5 and has been a part of the orphanage for 16.4 years. She wants to be a nurse and work in an institution in the future.",
+    image: "images/ingrid.png",
     sponsored: false
   }
 ];
@@ -2412,15 +2903,40 @@ function closeModal() {
   }
 }
 
+// function openSponsorForm(id) {
+//   const child = children.find(c => c.id === id);
+//   if (!child) return;
+//   currentChild = child;
+//   document.getElementById('formChildName').textContent = child.name;
+//   document.getElementById('formContent').style.display = 'block';
+//   document.getElementById('successState').style.display = 'none';
+//   document.getElementById('formOverlay').classList.add('active');
+//   document.body.style.overflow = 'hidden';
+// }
+
 function openSponsorForm(id) {
   const child = children.find(c => c.id === id);
   if (!child) return;
+
   currentChild = child;
-  document.getElementById('formChildName').textContent = child.name;
-  document.getElementById('formContent').style.display = 'block';
-  document.getElementById('successState').style.display = 'none';
-  document.getElementById('formOverlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
+
+  document.getElementById("formChildName").textContent = child.name;
+  document.getElementById("formOverlay").classList.add("active");
+  document.body.style.overflow = "hidden";
+
+  document.getElementById("donorboxContainer").innerHTML = `
+    <iframe
+      src="https://donorbox.org/embed/vcs-cha-sponsorship-program?default_interval=m&designation=${encodeURIComponent("Sponsor " + child.name)}"
+      name="donorbox"
+      allowpaymentrequest="allowpaymentrequest"
+      seamless="seamless"
+      frameborder="0"
+      scrolling="no"
+      height="900px"
+      width="100%"
+      style="max-width:100%; min-width:250px; max-height:none!important">
+    </iframe>
+  `;
 }
 
 function closeForm() {
@@ -2428,13 +2944,31 @@ function closeForm() {
   document.body.style.overflow = '';
 }
 
+// function submitForm() {
+//   document.getElementById('formContent').style.display = 'none';
+//   document.getElementById('successState').style.display = 'block';
+//   if (currentChild) {
+//     currentChild.sponsored = true;
+//     renderChildren(currentFilter);
+//   }
+// }
+
 function submitForm() {
-  document.getElementById('formContent').style.display = 'none';
-  document.getElementById('successState').style.display = 'block';
-  if (currentChild) {
-    currentChild.sponsored = true;
-    renderChildren(currentFilter);
-  }
+  const child = document.getElementById("formChildName").textContent;
+
+  document.getElementById("donorboxContainer").innerHTML = `
+    <iframe
+      src="https://donorbox.org/embed/vcs-cha-sponsorship-program?default_interval=m&designation=${encodeURIComponent("Sponsor " + child)}"
+      name="donorbox"
+      allowpaymentrequest="allowpaymentrequest"
+      seamless="seamless"
+      frameborder="0"
+      scrolling="no"
+      height="900px"
+      width="100%"
+      style="max-width:100%; min-width:250px; max-height:none!important">
+    </iframe>
+  `;
 }
 
 // Sticky nav
